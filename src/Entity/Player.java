@@ -6,7 +6,6 @@ import main.KeyHandler;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class Player extends entity{
@@ -37,10 +36,10 @@ public class Player extends entity{
 
         try {
 
-            up1 = ImageIO.read(getClass().getResource("/Entity/back a.png"));
-            up2 = ImageIO.read(getClass().getResource("/Entity/back b.png"));
-            down1 = ImageIO.read(getClass().getResource("/Entity/front A.png"));
-            down2 = ImageIO.read(getClass().getResource("/Entity/front B.png"));
+            up1 = ImageIO.read(getClass().getResource("/Entity/boy/back a.png"));
+            up2 = ImageIO.read(getClass().getResource("/Entity/boy/back b.png"));
+            down1 = ImageIO.read(getClass().getResource("/Entity/boy/front A.png"));
+            down2 = ImageIO.read(getClass().getResource("/Entity/boy/front B.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
