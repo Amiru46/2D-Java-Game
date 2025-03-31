@@ -13,16 +13,16 @@ public class TileManager {
 
     GamePanel gp;
     Tile[] tile;
-    int mapTilenum[][];
+    int mapTileNum[][];
 
     public TileManager(GamePanel gp) {
-        this.gp = gp;
 
+        this.gp = gp;
         tile = new Tile[10];
-        mapTilenum = new int[gp.maxScreenCol][gp.maxScreenRow];
+        mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
 
         getTileImage();
-        loadMap();
+        loadMap("/Entity/MapBack/Map02.txt");
     }
 
     public void getTileImage() {
@@ -46,13 +46,18 @@ public class TileManager {
 
     }
 
-    public void loadMap(){
+    public void loadMap(String fileName) {
+
         try {
-            InputStream is = getClass().getResourceAsStream("/Entity/Maps/Maps/Map01.txt");
+            InputStream is = getClass().getResourceAsStream(fileName);
+//            if (is == null) {
+//                System.out.println("Map file not found!");
+//                return;
+//            }
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
-            int row = 0;
             int col = 0;
+            int row = 0;
 
             while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
 
@@ -60,11 +65,11 @@ public class TileManager {
 
                 while (col < gp.maxScreenCol ) {
 
-                    String numbers[] = line.split("");
+                    String numbers[] = line.split(" ");
 
                     int num = Integer.parseInt(numbers[col]);
 
-                    mapTilenum[col][row] = num;
+                    mapTileNum[col][row] = num;
                     col++;
                 }
                 if (col == gp.maxScreenCol) {
@@ -88,7 +93,7 @@ public class TileManager {
 
         while (col < gp.maxScreenCol && row < gp.maxScreenRow ) {
 
-            int tileNum = mapTilenum[col][row];
+            int tileNum = mapTileNum[col][row];
 
             g2.drawImage(tile[tileNum].image, x, y,gp.tileSize, gp.tileSize, null);
             col++;
